@@ -5,10 +5,16 @@ on:
   pull_request:
     branches: [main]
 
+# Set default permissions to read-only for security
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
       
@@ -27,6 +33,8 @@ jobs:
   build:
     name: Build Project
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
       
@@ -50,6 +58,8 @@ jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
       
@@ -72,6 +82,8 @@ jobs:
     name: Performance Tests
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
       
@@ -115,6 +127,8 @@ jobs:
     name: Check Bundle Size
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
       
