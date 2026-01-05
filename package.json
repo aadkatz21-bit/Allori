@@ -15,9 +15,9 @@
     "performance:lighthouse": "lhci autorun",
     "performance:load": "k6 run tests/performance/load-test.js",
     "performance:analyze-bundle": "npx webpack-bundle-analyzer dist/stats.json",
-    "profile": "node --prof app.js && node --prof-process isolate-*.log > profile.txt",
-    "profile:clinic-doctor": "clinic doctor -- node app.js",
-    "profile:clinic-flame": "clinic flame -- node app.js"
+    "profile": "node --prof <your-app-entry>.js && node --prof-process isolate-*.log > profile.txt",
+    "profile:clinic-doctor": "clinic doctor -- node <your-app-entry>.js",
+    "profile:clinic-flame": "clinic flame -- node <your-app-entry>.js"
   },
   "devDependencies": {
     "@lhci/cli": "^0.12.0",

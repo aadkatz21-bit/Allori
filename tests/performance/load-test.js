@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { Rate, Trend } from 'k6/metrics';
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 
 // Custom metrics
 const errorRate = new Rate('errors');
@@ -150,18 +151,4 @@ export function handleSummary(data) {
     'stdout': textSummary(data, { indent: ' ', enableColors: true }),
     'summary.json': JSON.stringify(data),
   };
-}
-
-function textSummary(data, options = {}) {
-  const indent = options.indent || '';
-  const enableColors = options.enableColors || false;
-  
-  let output = '\n';
-  output += `${indent}Checks................: ${data.metrics.checks.passes}/${data.metrics.checks.fails + data.metrics.checks.passes} passed\n`;
-  output += `${indent}HTTP req duration.....: avg=${data.metrics.http_req_duration.values.avg.toFixed(2)}ms p(95)=${data.metrics.http_req_duration.values['p(95)'].toFixed(2)}ms\n`;
-  output += `${indent}HTTP req failed.......: ${(data.metrics.http_req_failed.values.rate * 100).toFixed(2)}%\n`;
-  output += `${indent}Iterations............: ${data.metrics.iterations.values.count}\n`;
-  output += `${indent}VUs...................: ${data.metrics.vus.values.value}\n`;
-  
-  return output;
 }
