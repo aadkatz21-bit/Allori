@@ -1,0 +1,38 @@
+{
+  "name": "allori-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Allori monorepo with performance best practices",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "build": "echo 'Add build command for your workspace'",
+    "test": "echo 'Add test command for your workspace'",
+    "performance:lighthouse": "lhci autorun",
+    "performance:load": "k6 run tests/performance/load-test.js",
+    "performance:analyze-bundle": "npx webpack-bundle-analyzer dist/stats.json",
+    "profile": "node --prof <your-app-entry>.js && node --prof-process isolate-*.log > profile.txt",
+    "profile:clinic-doctor": "clinic doctor -- node <your-app-entry>.js",
+    "profile:clinic-flame": "clinic flame -- node <your-app-entry>.js"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.50.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aadkatz21-bit/Allori"
+  }
+}
