@@ -1,0 +1,115 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-await-in-loop": "warn",
+    "no-console": "warn",
+    "no-constant-binary-expression": "error",
+    "no-promise-executor-return": "error",
+    "no-unmodified-loop-condition": "error",
+    "no-unreachable-loop": "error",
+    "require-atomic-updates": "error",
+    "max-depth": ["warn", 4],
+    "max-nested-callbacks": ["warn", 3],
+    "no-caller": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-labels": "error",
+    "no-lone-blocks": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-return-await": "warn",
+    "no-self-compare": "error",
+    "no-sequences": "error",
+    "no-throw-literal": "error",
+    "no-unneeded-ternary": "warn",
+    "no-unused-expressions": "error",
+    "no-useless-call": "error",
+    "no-useless-concat": "warn",
+    "no-useless-return": "warn",
+    "prefer-promise-reject-errors": "error",
+    "radix": "warn",
+    "array-callback-return": "error",
+    "no-constructor-return": "error",
+    "no-duplicate-imports": "error",
+    "no-unused-vars": ["warn", { 
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_"
+    }],
+    "no-use-before-define": ["error", { 
+      "functions": false,
+      "classes": true,
+      "variables": true
+    }],
+    "no-shadow": "warn",
+    "prefer-const": "warn",
+    "prefer-destructuring": ["warn", {
+      "array": false,
+      "object": true
+    }],
+    "prefer-rest-params": "warn",
+    "prefer-spread": "warn",
+    "prefer-template": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": ["warn", { 
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }],
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/prefer-for-of": "warn",
+        "@typescript-eslint/prefer-includes": "warn",
+        "@typescript-eslint/prefer-nullish-coalescing": "warn",
+        "@typescript-eslint/prefer-optional-chain": "warn",
+        "@typescript-eslint/prefer-string-starts-ends-with": "warn",
+        "@typescript-eslint/no-unnecessary-type-assertion": "warn"
+      }
+    },
+    {
+      "files": ["*.jsx", "*.tsx"],
+      "plugins": ["react", "react-hooks"],
+      "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
+      ],
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+      },
+      "rules": {
+        "react/jsx-no-bind": ["warn", {
+          "allowArrowFunctions": true,
+          "allowBind": false,
+          "ignoreRefs": true
+        }],
+        "react/no-array-index-key": "warn",
+        "react/no-unused-state": "warn",
+        "react/prefer-stateless-function": "warn",
+        "react/jsx-no-constructed-context-values": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+      }
+    }
+  ]
+}
